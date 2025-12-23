@@ -1,12 +1,136 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hant">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <title>1141 互動式網頁設計｜期末作品展示</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: "Segoe UI", "Noto Sans TC", sans-serif;
+    }
+
+    body {
+      margin: 0;
+      background: linear-gradient(120deg, #f6f9fc, #e9eef5);
+      color: #333;
+    }
+
+    header {
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.2rem;
+      color: #1a3d7c;
+    }
+
+    header p {
+      margin-top: 10px;
+      color: #555;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 20px 10px;
+      text-align: center;
+      text-decoration: none;
+      color: #333;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(120deg, transparent, rgba(26,61,124,0.15), transparent);
+      transition: 0.5s;
+    }
+
+    .card:hover::before {
+      left: 100%;
+    }
+
+    .card:hover {
+      transform: translateY(-6px) scale(1.03);
+      box-shadow: 0 14px 30px rgba(0,0,0,0.15);
+    }
+
+    .card span {
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: #1a3d7c;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 10px;
+      font-size: 0.9rem;
+      color: #777;
+    }
+  </style>
 </head>
+
 <body>
-    11測試
+
+<header>
+  <h1>1141 互動式網頁設計</h1>
+  <p>期末作品展示（點選學號查看 GitHub Pages）</p>
+</header>
+
+<div class="container">
+  <div class="grid" id="studentList"></div>
+</div>
+
+<footer>
+  © 1141 Interactive Web Design Final Project
+</footer>
+
+<script>
+  const students = [
+    "3B032036","3B132036","3B132061","3B132091","3B132101","3B232027",
+    "3B332001","3B332006","3B332007","3B332008","3B332010","3B332012",
+    "3B332013","3B332014","3B332016","3B332017","3B332018","3B332020",
+    "3B332022","3B332028","3B332035","3B332037","3B332038","3B332042",
+    "3B332044","3B332052","3B332053","3B332054","3B332056","3B332060",
+    "3B332062","3B332063","3B332064","3B332066","3B332067","3B332069",
+    "3B332070","3B332073","3B332080","3B332084","3B332085","3B332087",
+    "3B332088","3B332097"
+  ];
+
+  const container = document.getElementById("studentList");
+
+  students.forEach(id => {
+    const a = document.createElement("a");
+    a.href = `https://1141rwd.github.io/${id}/`;
+    a.target = "_blank";
+    a.className = "card";
+    a.innerHTML = `<span>${id}</span>`;
+    container.appendChild(a);
+  });
+</script>
+
 </body>
 </html>
